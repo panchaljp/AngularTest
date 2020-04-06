@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { EmployeeService } from '../employee.service';
+import { IEmployee } from '../employee';
 
 @Component({
   selector: 'app-employee-detail',
@@ -15,12 +16,15 @@ import { EmployeeService } from '../employee.service';
 export class EmployeeDetailComponent implements OnInit {
   @Input() public parentData;
   
-  public employees = [];
+  employees: IEmployee[];
   constructor(private _employeeService: EmployeeService) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
     this._employeeService.getEmployee()
-      .subscribe(
-        data => this.employees = data);
+      .subscribe((data: IEmployee[]) => {
+
+        this.employees = data;
+
+      });
   }
 }
