@@ -1,0 +1,6 @@
+<div>
+  <h2>It is recieved by Test {{message}}</h2>
+</div>
+<app-test (childEvent)="message=$event" [parentData]="name"></app-test>
+<app-employee-detail [parentData]="name"></app-employee-detail>
+<app-employee-list></app-employee-list>
